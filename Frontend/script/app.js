@@ -3,7 +3,7 @@ const apikey2 = 'KetVcJ0XtgS1bIzmzumKbNV3bj6VMEYm';
 const apikey3 = 'c6XgkGJdU2oEmV2ymCc64ukAP1eLpjn2';
 
 // const lanIP = `${window.location.hostname}:5500`;
-const backend_IP = 'http://localhost:5000';
+const backend_IP = `${window.location.hostname}:5500`;
 const backend = backend_IP + '/api/v1';
 const socketio = io(backend_IP);
 
