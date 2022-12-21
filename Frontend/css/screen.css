@@ -48,7 +48,6 @@ html {
     color: var(--global-color);
     font-family: Helvetica, arial, sans-serif;
     font-feature-settings: "zero" 1;
-    overflow: hidden; 
 }
  
 body {margin: 0; height: 100%; overflow-y: auto; overflow-x: hidden;}
@@ -416,6 +415,18 @@ p.c-auteur {
 
 @keyframes thumbsup {
     to{ fill: #01A14F;}
+    0% {
+        transform: scale(1);
+        transform-origin: center;
+    }
+    50% {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+    100% {
+        transform: scale(1);
+        transform-origin: center;
+    }
 }
 
 .c-option:checked + .c-option__symbol .c-thumbs_down{
@@ -426,6 +437,18 @@ p.c-auteur {
 
 @keyframes thumbsdown {
     to{ fill: #F70102;}
+    0% {
+        transform: scale(1);
+        transform-origin: center;
+    }
+    50% {
+        transform: scale(1.1);
+        transform-origin: center;
+    }
+    100% {
+        transform: scale(1);
+        transform-origin: center;
+    }
 }
 
 .c-svg{
