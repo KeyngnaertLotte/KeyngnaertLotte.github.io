@@ -17,9 +17,13 @@
     --likes-color: green;
 
     /* colors */
-    --global-background-color: #fff;
-    --global-color: #100f0f;
+    --global-color-white: #fff;
+    --global-color-black: #100f0f;
     --global-background-color--card: #f3f3f3;
+    --global-color-alpha:#cb997eed;
+
+    --global-baseline: calc(1rem/3.6);
+    --global-whitespace--sm: calc(var(--global-baseline) * 3);
 }
 
 
@@ -35,18 +39,19 @@
 */
 
 html {
-    font-size: 18px;
+    font-size: 112.5%;
     line-height: 1.5;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--global-background-color);
+    background-color: var(--global-color-white);
     color: var(--global-color);
     font-family: Helvetica, arial, sans-serif;
     font-feature-settings: "zero" 1;
+    overflow: hidden; 
 }
-
-html, body {margin: 0; height: 100%; overflow: auto}
+ 
+body {margin: 0; height: 100%; overflow-y: auto; overflow-x: hidden;}
 
 *,
 *:before,
@@ -62,14 +67,14 @@ html, body {margin: 0; height: 100%; overflow: auto}
 */
 
 ::-moz-selection {
-    background: red;
-    color: white;
+    background: var(--global-color-alpha);
+    color: var(--global-color-white);
     text-shadow: none;
 }
 
 ::selection {
-    background: red;
-    color: white;
+    background: var(--global-color-alpha);
+    color: var(--global-color-white);
     text-shadow: none;
 }
 
@@ -101,7 +106,7 @@ h3 {
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 1.8rem; /* 32/18 */
     line-height: 48px;
     margin: 12px 0 6px;
     padding-bottom: 12px;
@@ -113,13 +118,13 @@ h1 {
 }
 
 h2 {
-    font-size: 32px;
+    font-size: 1.8rem; /* 32/18 */
     line-height: 40px;
     margin: 0 0 24px;
 }
 
 h3 {
-    font-size: 20px;
+    font-size: 1.1rem; /* 20/18 */
     line-height: 32px;
     margin: 15px 0 10px;
 }
@@ -127,7 +132,7 @@ h3 {
 h4,
 h5,
 h6 {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 24px;
     margin: 10px 0;
@@ -155,47 +160,21 @@ li ol {
     margin-bottom: 0;
 }
 
-blockquote {
-    font-style: normal;
-    font-size: 23px;
-    line-height: 32px;
-    margin: 0 0 24px;
-}
-
-blockquote * {
-    font-size: inherit;
-    line-height: inherit;
-}
-
-figcaption {
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 16px;
-    margin-top: 8px;
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: LightGrey;
-    margin: 0 0 24px;
-}
-
 a {
-    color: red;
-    outline-color: red;
+    color: var(--global-color-alpha);
+    outline-color: var(--global-color-alpha);
     outline-width: medium;
     outline-offset: 2px;
 }
 
 a:visited,
 a:active {
-    color: red;
+    color: var(--global-color-alpha);
 }
 
 a:hover,
 a:focus {
-    color: red;
+    color: var(--global-color-alpha);
 }
 
 label,
@@ -307,13 +286,7 @@ li{
 
 .c-app{
     min-height: 100vh;
-    padding: 0.5rem 1rem 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: auto;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 0.5rem 1rem 0.5rem; 
 }
 
 .c-categorie{
@@ -336,10 +309,10 @@ li{
     border-radius: 5px;
     padding: 5px 15px;
     /* border: 1px solid #cb997e; */
-    width: 100%;
+    width: 90%;
     text-align: center;
     box-shadow:  2.5px 5px 9px  gray ;
-    color: #fff;
+    color: var(--global-color-white);
 }
 
 .c-categorie__wrapper{
@@ -360,8 +333,8 @@ li{
 .c-categorie__button:hover,
 .c-categorie__button:focus,
 .c-categorie__button:active{
-    background-color: #cb997eed;
-    color: #fff;
+    background-color: var(--global-color-alpha);
+    color: var(--global-color-white);
 }
 
 
@@ -375,8 +348,6 @@ li{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    margin: 0 20px;
     width: 100%;
     height: 150vh;
 }
@@ -406,7 +377,7 @@ li{
 }
 
 p.c-auteur {
-    color: #cb997eed;
+    color: var(--global-color-alpha);
 }
 
 .c-voting{
@@ -519,7 +490,7 @@ canvas{
 #STATES
 \*------------------------------------*/
 
-@media only screen and (min-width: 800px){
+@media only screen and (min-width: 62em){
     
 
 /*------------------------------------*\
@@ -533,7 +504,7 @@ canvas{
 */
 
 html {
-    font-size: 16px;
+    font-size: 100%;
 }
 
 
@@ -549,12 +520,12 @@ html {
 */
 
 h1 {
-    font-size: 40px;
+    font-size: 2.5rem; /* 40/16 */
 }
 
 
 h3 {
-    font-size: 26px;
+    font-size: 1.625rem; 
 }
 
 /*------------------------------------*\
@@ -574,16 +545,19 @@ h3 {
 #COMPONENTS
 \*------------------------------------*/
 
+
 .c-app{
     padding: 0;
-    flex-direction: row;
-    align-items: flex-start;
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(1, 1fr);
 }
 
 .c-categorie{
-    width: 300px;
     height: 80vh;
     margin: 16px;
+    grid-column: 1 / span 2  ;
 }
 
 .c-categorie__small  {
@@ -594,8 +568,18 @@ h3 {
     display: inline-block;
 }
 
+.c-boeken{
+    grid-column: 3 / last-line ;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 16px;
+    width: auto;
+}
+
 .c-boeken__boek{
-    width: 30%;
+    width: auto;
+    margin: 0;
 }
 
 .c-cover{
@@ -613,6 +597,8 @@ h3 {
 
 .c-grafieken{
     height: 82vh;
+    width: auto;
+    grid-column: 3 / last-line ;
 }
 
 }
