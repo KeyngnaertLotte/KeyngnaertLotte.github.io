@@ -232,7 +232,7 @@ const getAllLikes = function () {
 const generateGraphData = async (jsonobject) => {
   // console.log(jsonobject);
   for (let i = 0; i < jsonobject.length; i++) {
-    console.log(jsonobject[i]);
+    // console.log(jsonobject[i]);
     graphLabels[i] = jsonobject[i].Categorie;
     graphData[i] = jsonobject[i].TotalLikes;
   }
