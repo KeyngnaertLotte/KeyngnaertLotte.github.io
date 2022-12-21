@@ -35,13 +35,13 @@ const showBooks = async (cat) => {
     document.querySelector('.js-grafiek').classList.add('o-hide-boeken');
     document.body.style.overflow = 'auto';
     const data = await getAPI(apikey2, cat);
-    console.log(data.results.books);
+    // console.log(data.results.books);
     let htmlstring_boek = '';
     for (let book of data.results.books) {
       var isbn = book.primary_isbn10;
       const title = book.title;
       if (isbn == '') {
-        console.log(book.primary_isbn13);
+        // console.log(book.primary_isbn13);
         isbn = book.primary_isbn13;
       }
 
@@ -145,7 +145,7 @@ const showBooks = async (cat) => {
 socketio.on('B2F_showLikes', function (message) {
   // console.log(message)
   const boek = document.getElementById(message.BookName);
-  console.log(boek);
+  // console.log(boek);
   boek.querySelector('.js-like').innerHTML = message.Likes;
   boek.querySelector('.js-dislike').innerHTML = message.Dislikes;
   // console.log(message.Likes + message.Dislikes)
@@ -167,7 +167,7 @@ const listenToClickCategorie = () => {
   for (const btn of buttons) {
     btn.addEventListener('click', function () {
       const cat = btn.id;
-      console.log('dit is de button:  ' + btn.innerHTML);
+      // console.log('dit is de button:  ' + btn.innerHTML);
       document.querySelector('.js-open').innerHTML = btn.innerHTML;
       showBooks(cat);
       document.querySelector('.js-hide').classList.add('o-hide');
@@ -198,7 +198,7 @@ const listenToClickDislike = () => {
       const book = like.getAttribute('for');
       const likeDislike = book.slice(-1);
       const bookTitle = book.substring(0, book.length - 2);
-      console.log(bookTitle);
+      // console.log(bookTitle);
 
       if (likeDislike == 1) {
         socketio.emit('F2B_add_like', { bookName: bookTitle });
@@ -230,13 +230,13 @@ const getAllLikes = function () {
 };
 
 const generateGraphData = async (jsonobject) => {
-  console.log(jsonobject);
+  // console.log(jsonobject);
   for (let i = 0; i < jsonobject.length; i++) {
     console.log(jsonobject[i]);
     graphLabels[i] = jsonobject[i].Categorie;
     graphData[i] = jsonobject[i].TotalLikes;
   }
-  console.log(graphData, graphLabels);
+  // console.log(graphData, graphLabels);
   init(graphData, graphLabels);
 };
 
