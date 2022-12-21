@@ -23,9 +23,11 @@ DROP TABLE IF EXISTS `bookranking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bookranking` (
-  `Id` int NOT NULL,
-  `Likes` int NOT NULL DEFAULT '0',
-  `Dislikes` int NOT NULL DEFAULT '0',
+  `Id` VARCHAR(50) NOT NULL,
+  `BookName` VARCHAR(100) NOT NULL DEFAULT 'NoName',
+  `Likes` INT NOT NULL DEFAULT 0,
+  `Dislikes` INT NOT NULL DEFAULT 0,
+  `Categorie` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -37,7 +39,7 @@ CREATE TABLE `bookranking` (
 
 LOCK TABLES `bookranking` WRITE;
 /*!40000 ALTER TABLE `bookranking` DISABLE KEYS */;
-INSERT INTO `bookranking` VALUES (1668001225,1,0);
+INSERT INTO `bookranking` VALUES (1668001225,"LotteTest",1,0,"Testing");
 /*!40000 ALTER TABLE `bookranking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

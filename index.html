@@ -35,7 +35,7 @@
       <span class="c-app">
         <span class="c-categorie">
           <h3 class="c-categorie__big">Categories</h3>
-          <h3 class="c-categorie__small js-open">Change categories</h3>
+          <h3 class="c-categorie__small js-open">Home</h3>
           <div class="c-categorie__wrapper js-hide o-hide">
             <button class="c-categorie__button js-button" id="Home">
               Home
@@ -59,86 +59,86 @@
               <p class="c-auteur">auteur</p>
               <p>description</p>
             </span>
-            <span>
-              <span class="c-voting">
-                <ul class="o-list">
-                  <li>
-                    <input
-                      class="o-hide-accessible c-option"
-                      type="radio"
-                      name="radios"
-                      id="radio1"
-                    />
-                    <label
-                      for="${book.primary_isbn10}_1"
-                      class="c-option__symbol js-like"
+            <span class="c-voting">
+              <ul class="o-list">
+                <li>
+                  <input
+                    class="o-hide-accessible c-option"
+                    type="radio"
+                    name="radios"
+                    id="radio1"
+                  />
+                  <label
+                    for="${book.primary_isbn10}_1"
+                    class="c-option__symbol js-like"
+                  >
+                    <svg
+                      class="c-option__symbol--svg"
+                      version="1.1"
+                      id="Layer_2"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      style="enable-background: new 0 0 50 50"
+                      xml:space="preserve"
                     >
-                      <svg
-                        class="c-option__symbol--svg"
-                        version="1.1"
-                        id="Layer_2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        style="enable-background: new 0 0 50 50"
-                        xml:space="preserve"
-                      >
-                        <path
-                          class="c-svg c-thumbs_up"
-                          d="M43.8,21.6c0.3,0.3,0.4,1.1,0.4,1.1l0.1,5.1l-6,14.1c0,0-0.8,1.3-1.3,1.6c-0.3,0.2-1.7,0.3-1.7,0.3l-29.8,0
+                      <path
+                        class="c-svg c-thumbs_up"
+                        d="M43.8,21.6c0.3,0.3,0.4,1.1,0.4,1.1l0.1,5.1l-6,14.1c0,0-0.8,1.3-1.3,1.6c-0.3,0.2-1.7,0.3-1.7,0.3l-29.8,0
           V21.2h8.8L27.3,7.7c0,0,1.2-1.4,1.4-1.5c0.5-0.3,0.1,2.2,0.1,2.2l-2.7,12.7h16.8C42.9,21.2,43.6,21.3,43.8,21.6z M14.4,43.8V21.2
           V43.8z"
-                        />
-                      </svg>
-                    </label>
-                    123
-                  </li>
-                  <li>
-                    <input
-                      class="o-hide-accessible c-option"
-                      type="radio"
-                      name="radios"
-                      id="radio2"
-                    />
-                    <label
-                      for="${book.primary_isbn10}_2"
-                      class="c-option__symbol js-dislike"
+                      />
+                    </svg>
+                  </label>
+                  123
+                </li>
+                <li>
+                  <input
+                    class="o-hide-accessible c-option"
+                    type="radio"
+                    name="radios"
+                    id="radio2"
+                  />
+                  <label
+                    for="${book.primary_isbn10}_2"
+                    class="c-option__symbol js-dislike"
+                  >
+                    <svg
+                      class="c-option__symbol--svg"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 50 50"
+                      style="enable-background: new 0 0 50 50"
+                      xml:space="preserve"
                     >
-                      <svg
-                        class="c-option__symbol--svg"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px"
-                        y="0px"
-                        viewBox="0 0 50 50"
-                        style="enable-background: new 0 0 50 50"
-                        xml:space="preserve"
-                      >
-                        <path
-                          class="c-svg c-thumbs_down"
-                          d="M6.1,28.5c-0.3-0.3-0.4-1.1-0.4-1.1l-0.1-5.1l6-14.1c0,0,0.8-1.3,1.3-1.6c0.2-0.2,1.7-0.3,1.7-0.3h29.8v22.6
+                      <path
+                        class="c-svg c-thumbs_down"
+                        d="M6.1,28.5c-0.3-0.3-0.4-1.1-0.4-1.1l-0.1-5.1l6-14.1c0,0,0.8-1.3,1.3-1.6c0.2-0.2,1.7-0.3,1.7-0.3h29.8v22.6
           h-8.8L22.7,42.2c0,0-1.2,1.4-1.4,1.5c-0.5,0.3-0.1-2.2-0.1-2.2l2.7-12.7H7.1C7.1,28.9,6.4,28.6,6.1,28.5z M35.6,6.2v22.6V6.2z"
-                        />
-                      </svg>
-                    </label>
-                    <p>123</p>
-                  </li>
-                </ul>
-                <div class="line"></div>
-                <!-- <button class="c-boeken__boek-review js-like">like</button>
+                      />
+                    </svg>
+                  </label>
+                  <p>123</p>
+                </li>
+              </ul>
+              <div class="line"></div>
+              <!-- <button class="c-boeken__boek-review js-like">like</button>
                       <button class="c-boeken__boek-review js-dislike">dislike</button> -->
-              </span>
             </span>
           </div>
         </span>
-        <span class="js-grafiek c-group-grafieken">
-          <span class="c-grafieken">
-            <h4>categorie naam</h4>
-            <canvas class="js-graph c-grafiek" width="auto" height="auto" margin="0"></canvas>
-          </span>
+        <span class="js-grafiek c-grafieken">
+          <canvas
+            class="js-graph c-grafiek"
+            width="80vw"
+            height="40vh"
+            margin="0"
+          ></canvas>
         </span>
       </span>
     </main>

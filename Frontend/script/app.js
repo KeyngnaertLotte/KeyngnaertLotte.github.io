@@ -3,14 +3,18 @@ const apikey2 = 'KetVcJ0XtgS1bIzmzumKbNV3bj6VMEYm';
 const apikey3 = 'c6XgkGJdU2oEmV2ymCc64ukAP1eLpjn2';
 
 // const lanIP = `${window.location.hostname}:5500`;
-const backend_IP = `${window.location.hostname}:5500`;
+const backend_IP = 'http://localhost:5000';
 const backend = backend_IP + '/api/v1';
 const socketio = io(backend_IP);
 
 var showHide = false;
 var chart = '';
 var cats = [];
-var books = [];
+
+var graphListInfo = [];
+var numberOfCats = 0;
+var graphLabels = [];
+var graphData = [];
 
 const showCategorieen = async () => {
   const data = await getAPI(apikey, 'full-overview');
@@ -23,22 +27,17 @@ const showCategorieen = async () => {
   }
   document.querySelector('.js-categorie').innerHTML = htmlstring_categorie;
   listenToClickCategorie();
-  // console.log(cats.length)
-  //   for(let i = 0; i < cats.length; i++){
-  //     getAllLikes(cats[i])
-  //   }
 };
 
 const showBooks = async (cat) => {
   if (cat != 'Home') {
     document.querySelector('.js-boek').classList.remove('o-hide-boeken');
     document.querySelector('.js-grafiek').classList.add('o-hide-boeken');
+    document.body.style.overflow = 'auto';
     const data = await getAPI(apikey2, cat);
     console.log(data.results.books);
-    books = [];
     let htmlstring_boek = '';
     for (let book of data.results.books) {
-      books.push(book);
       var isbn = book.primary_isbn10;
       const title = book.title;
       if (isbn == '') {
@@ -64,7 +63,6 @@ const showBooks = async (cat) => {
 		  <p class="c-auteur">${book.author}</p>
 		  <p>${book.description}</p>
 		</span>
-		<span>
     <span class="c-voting" id="${book.title}">
               <ul class="o-list" ">
               <li> 
@@ -129,7 +127,6 @@ const showBooks = async (cat) => {
               </ul>
               <div class="line js-line" ></div>
             </span>
-	  </span>
 	  </div>`;
       // console.log(
       //   `image: ${book.book_image} \n author: ${book.author} \n title: ${book.title} \n description: ${book.description}`
@@ -140,16 +137,8 @@ const showBooks = async (cat) => {
   } else {
     document.querySelector('.js-boek').classList.add('o-hide-boeken');
     document.querySelector('.js-grafiek').classList.remove('o-hide-boeken');
-    let htmlstring_grafiek = '';
-    for (let categorie of cats) {
-      // console.log(categorie)
-      htmlstring_grafiek += `<span class="c-grafieken">
-            <h4>${categorie}</h4>
-            <canvas class="js-${categorie} c-grafiek" width="auto" height="auto" margin="0"></canvas>
-            </span>`;
-    }
-    document.querySelector('.js-grafiek').innerHTML = htmlstring_grafiek;
-    getDataPerCat();
+    document.body.style.overflow = 'hidden';
+    getAllLikes();
   }
 };
 
@@ -236,56 +225,40 @@ const listenToClickTitle = () => {
   });
 };
 
-const getAllLikes = function (cat) {
-  handleData(backend + `/top/${cat}`, generateGraphData);
-};
-
-const getDataPerCat = function () {
-  for (let i of cats) {
-    console.log(i);
-    getAllLikes(i);
-  }
+const getAllLikes = function () {
+  handleData(backend + `/top/`, generateGraphData);
 };
 
 const generateGraphData = async (jsonobject) => {
   console.log(jsonobject);
-  console.log(jsonobject.length);
-  const labels = [];
-  const data = [];
-
   for (let i = 0; i < jsonobject.length; i++) {
-    console.log(jsonobject[i].Categorie);
-    var ctx = document.querySelector(`.js-${jsonobject[0].Categorie}`);
-    console.log(jsonobject[i].BookName);
-    labels[i] = jsonobject[i].BookName;
-    data[i] = jsonobject[i].Likes;
+    console.log(jsonobject[i]);
+    graphLabels[i] = jsonobject[i].Categorie;
+    graphData[i] = jsonobject[i].TotalLikes;
   }
-  init(labels, data, ctx);
-
-  // const labels = [];
-  // const data = [];
-  // for (let i = 0; i < 10; i++) {
-  //   labels[i] = jsonobject[i].BookName;
-  //   data[i] = jsonobject[i].Likes;
-  // }
-  // // console.log(labels, data)
-  // init(labels, data);
+  console.log(graphData, graphLabels);
+  init(graphData, graphLabels);
 };
 
-const init = function (labels, data, ctx) {
+const init = function (data, labels) {
+  const ctx = document.querySelector('.js-graph');
+
   chart = new Chart(ctx, {
-    type: 'doughnut',
+    type: 'polarArea',
     data: {
       labels: labels,
       datasets: [
         {
-          label: `Aantal likes: `,
+          label: `Aantal likes`,
           data: data,
           borderWidth: 1,
         },
       ],
     },
     options: {
+      zoomOutPercentage: 30,
+      responsive: true,
+      layout: {},
       scales: {
         y: {
           beginAtZero: true,
@@ -295,9 +268,20 @@ const init = function (labels, data, ctx) {
           display: false,
         },
       },
+
       plugins: {
+        title: {
+          display: true,
+          text: 'Totale aantal likes per categorie',
+          font: {
+            size: 16,
+          },
+        },
         legend: {
           display: false,
+          // position: 'right',
+          fullSize: false,
+          // align: end,
         },
       },
     },

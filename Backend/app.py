@@ -22,10 +22,10 @@ def initial_connection():
     print('a new client connnect')
 
 
-@app.route(endpoint + '/top/<cat>', methods=['GET'])
-def get_allLikes(cat):
+@app.route(endpoint + '/top/', methods=['GET'])
+def get_allLikes():
     if request.method == 'GET':
-        s = DataRepository.readAllLikes(cat)
+        s = DataRepository.readAllLikes()
         return jsonify(s), 200
 
 
@@ -41,15 +41,16 @@ def getLikes(jsonObject):
 
 @socketio.on('F2B_update_likes')
 def getLikes(jsonObject):
-    isbn_nr = jsonObject['isbn_nr']
-    insert = DataRepository.readUpdatedLikes(isbn_nr)
+    title = jsonObject['bookName']
+    insert = DataRepository.readUpdatedLikes(title)
     if insert:
         socketio.emit('B2F_showLikes', insert)
 
 
 @socketio.on('F2B_add_like')
 def updateLikes(jsonObject):
-    bookName = jsonObject['BookName']
+    bookName = jsonObject['bookName']
+    print(bookName)
     data = DataRepository.updateLike(bookName)
     print(data)
     if data > 0:
