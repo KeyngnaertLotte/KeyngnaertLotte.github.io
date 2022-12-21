@@ -1,0 +1,947 @@
+/*------------------------------------*\
+#FONTS
+\*------------------------------------*/
+
+@font-face {
+    font-family: "Chomsky";
+    font-weight: 600;
+    src: url("../fonts/Chomsky.woff2") format("woff2");
+}
+
+/*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    --likes-width: 30%;
+    --likes-color: green;
+
+    /* colors */
+    --global-background-color: #fff;
+    --global-color: #100f0f;
+    --global-background-color--card: #f3f3f3;
+
+
+    /* opacity */
+
+    /* transitions */
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    font-family: Helvetica, arial, sans-serif;
+    font-feature-settings: "zero" 1;
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background: red;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: red;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 48px;
+    margin: 12px 0 6px;
+    padding-bottom: 12px;
+    font-family: 'Chomsky', arial, sans-serif;
+    max-width: auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 32px;
+    margin: 15px 0 10px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 10px 0;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+    color: gray;
+    text-align: justify;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    color: red;
+    outline-color: red;
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: red;
+}
+
+a:hover,
+a:focus {
+    color: red;
+}
+
+label,
+input {
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+
+path{
+    cursor: pointer;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+
+
+.o-hide{
+    display: none !important;
+}
+
+
+.o-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+
+.page{
+    max-height: 100vh;
+}
+
+.c-app{
+    min-height: 100vh;
+    padding: 0.5rem 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.c-categorie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.c-categorie__big  {
+    display: none;
+}
+
+.c-categorie__small{
+    display: inline-block;
+    background-color: #cb997e;
+    border-radius: 5px;
+    padding: 5px 15px;
+    /* border: 1px solid #cb997e; */
+    width: 100%;
+    text-align: center;
+    box-shadow:  2.5px 5px 9px  gray ;
+    color: #fff;
+}
+
+.c-categorie__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.c-categorie__button{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.c-categorie__button:hover,
+.c-categorie__button:focus,
+.c-categorie__button:active{
+    background-color: #cb997eed;
+    color: #fff;
+}
+
+
+
+
+.c-categorie__button:last-child{
+    border-bottom: none;
+}
+
+.c-boeken{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.c-boeken__boek{
+    margin: 10px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--global-background-color--card);
+    border-radius: 5px;
+}
+
+.c-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.c-cover{
+    width: 70%;
+}
+
+p.c-auteur {
+    color: #cb997eed;
+}
+
+.c-voting{
+    width: 100%;
+}
+
+
+.c-thumbs_up{
+    stroke: black;
+    fill: transparent;
+}
+
+.c-thumbs_down{
+    stroke: black;
+    fill: transparent;
+}
+
+.c-option__symbol{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.c-option:checked + .c-option__symbol .c-thumbs_up{
+    animation: thumbsup 0.5s;
+    animation-fill-mode: forwards;
+    stroke: #14703D;
+}
+
+@keyframes thumbsup {
+    to{ fill: #01A14F;}
+}
+
+.c-option:checked + .c-option__symbol .c-thumbs_down{
+    animation: thumbsdown 0.5s;
+    animation-fill-mode: forwards;
+    stroke: #C40000;
+}
+
+@keyframes thumbsdown {
+    to{ fill: #F70102;}
+}
+
+.c-svg{
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+}
+
+.c-option__symbol--svg{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-grafieken{
+    height: 100%;
+    width: 20%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.c-group-grafieken{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.line {
+    background:red;
+    position:relative;
+    height:3px;
+    width: 9.375rem;
+    border-radius: 5px;
+}
+.line:before {
+    content:'';
+    background: var(--likes-color);
+    width:var(--likes-width);
+    height:3px;
+    position:absolute;    
+    border-radius: 5px;
+}
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+
+/*------------------------------------*\
+#STATES
+\*------------------------------------*/
+
+@media only screen and (min-width: 800px){
+    /*------------------------------------*\
+#Variables
+\*------------------------------------*/
+
+:root {
+    /* colors */
+    --global-background-color: #fff;
+    --global-color: #100f0f;
+    --global-background-color--card: #f3f3f3;
+
+    /* opacity */
+
+    /* transitions */
+}
+
+/*------------------------------------*\
+#GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+html {
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--global-background-color);
+    color: var(--global-color);
+    font-family: Helvetica, arial, sans-serif;
+    font-feature-settings: "zero" 1;
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/*
+* Remove text-shadow in selection highlight:
+* https://twitter.com/miketaylr/status/12228805301
+*
+* Customize the background color to match your design.
+*/
+
+::-moz-selection {
+    background: red;
+    color: white;
+    text-shadow: none;
+}
+
+::selection {
+    background: red;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+#Elements
+\*------------------------------------*/
+
+/*
+Elements: Images
+---
+Default markup for images to make them responsive
+*/
+
+img {
+    max-width: 100%;
+    vertical-align: top;
+}
+
+/*
+    Elements: typography
+    ---
+    Default markup for typographic elements
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 48px;
+    margin: 24px 0;
+    padding-bottom: 24px;
+    font-family: 'Chomsky', arial, sans-serif;
+    max-width: auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid black;
+}
+
+h2 {
+    font-size: 32px;
+    line-height: 40px;
+    margin: 0 0 24px;
+}
+
+h3 {
+    font-size: 26px;
+    line-height: 32px;
+    margin: 15px 0 10px;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 10px 0;
+}
+
+p,
+ol,
+ul,
+dl,
+table,
+address,
+figure {
+    margin: 0 0 24px;
+    color: gray;
+    text-align: justify;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+li ul,
+li ol {
+    margin-bottom: 0;
+}
+
+blockquote {
+    font-style: normal;
+    font-size: 23px;
+    line-height: 32px;
+    margin: 0 0 24px;
+}
+
+blockquote * {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+figcaption {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: LightGrey;
+    margin: 0 0 24px;
+}
+
+a {
+    color: red;
+    outline-color: red;
+    outline-width: medium;
+    outline-offset: 2px;
+}
+
+a:visited,
+a:active {
+    color: red;
+}
+
+a:hover,
+a:focus {
+    color: red;
+}
+
+label,
+input {
+    display: block;
+}
+
+select {
+    width: 100%;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+/*------------------------------------*\
+#OBJECTS
+\*------------------------------------*/
+/*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none;
+}
+
+/*
+    Object: Hide accessible
+    ---
+    Accessibly hide any element
+*/
+
+.o-hide-accessible {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.o-hide{
+    display: flex !important;
+}
+
+.o-hide-boeken{
+    display: none !important;
+}
+
+
+.o-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+
+/*------------------------------------*\
+#COMPONENTS
+\*------------------------------------*/
+
+
+.c-app{
+    max-height: 100vh;
+    padding: 1rem 1rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.c-categorie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    /* overflow-y: auto; */
+    height: 80vh;
+}
+
+.c-categorie__small  {
+    display: none;
+}
+
+.c-categorie__big{
+    display: inline-block;
+}
+
+.c-categorie__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.c-categorie__button{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+    text-align: center;
+}
+
+
+.c-categorie__button:last-child{
+    border-bottom: none;
+}
+
+.c-categorie__button:hover,
+.c-categorie__button:focus,
+.c-categorie__button:active{
+    background-color: #cb997eed;
+    color: #fff;
+}
+
+.c-boeken{
+    margin: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 150vh;
+}
+
+.c-boeken__boek{
+    margin: 10px;
+    padding: 20px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--global-background-color--card);
+    border-radius: 5px;
+}
+
+.c-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.c-cover{
+    width: 50%;
+}
+
+p.c-auteur {
+    color: red;
+}
+
+
+
+/*------------------------------------*\
+#UTILITIES
+\*------------------------------------*/
+}
+
+/*
+    Change the theme using CSS vars.
+*/
+
+/* Night version: just switch the light and dark vars */
+
+/*------------------------------------*\
+#MEDIA
+\*------------------------------------*/
+
+/*
+    Print styles.
+    ---
+    Inlined to avoid the additional HTTP request:
+    http://www.phpied.com/delay-loading-your-print-css/
+*/
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+        http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+    * Don't show links that are fragment identifiers,
+    * or use the `javascript:` pseudo protocol
+    */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre {
+        white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+    * Printing Tables:
+    * http://css-discuss.incutio.com/wiki/Printing_Tables
+    */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

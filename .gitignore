@@ -1,0 +1,4 @@
+venv_fswd/
+__pycache__/
+config.py
+.DS_Store

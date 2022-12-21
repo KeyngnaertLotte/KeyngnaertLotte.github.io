@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>New York Times Bestsellers</title>
+    <meta
+      name="description"
+      content="An app about the New York Times bestsellers."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msapplication-TileColor" content="#cce7ff" />
+    <meta name="theme-color" content="#44c8f5" />
+
+    <link
+      rel="shortcut icon"
+      href="./img/svg/the_new_york_times_alt.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/screen.css" />
+
+    <script
+      src="https://cdn.socket.io/4.4.1/socket.io.min.js"
+      integrity="sha384-fKnu0iswBIqkjxrhQCTZ7qlLHOFEgNkRmK2vaO/LbTZSXdJfAu6ewRBdwHPhBo/H"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script/dataHandler.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./script/app.js"></script>
+  </head>
+  <body>
+    <main class="page">
+      <h1>New York Times Bestsellers</h1>
+
+      <span class="c-app">
+        <span class="c-categorie">
+          <h3 class="c-categorie__big">Categories</h3>
+          <h3 class="c-categorie__small js-open">Change categories</h3>
+          <div class="c-categorie__wrapper js-hide o-hide">
+            <button class="c-categorie__button js-button" id="Home">
+              Home
+            </button>
+            <span class="c-categorie__wrapper js-categorie">
+              <button class="c-categorie__button js-button" id="categorie1">
+                Categorie 1
+              </button>
+            </span>
+          </div>
+        </span>
+        <span class="c-boeken js-boek">
+          <div class="c-boeken__boek">
+            <span class="c-info">
+              <img
+                class="c-cover"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALcAAAETCAMAAABDSmfhAAAAMFBMVEWpqampqae/v72kpKS+vr6lpaOmpqO9vbuhoaGnp6fFxcXFxcOioqCrq6menZzKyce7N+J8AAABxElEQVR4nO3T223DQBDF0LUeWcex7P67jZRUkB8GBHgqIAZ3xmNzWS7za2zrfTXZL885tvvnMDkuZ/djHarw2+n4WM6d/HfJn9x+undd92943Rh1t+8v3fe2drcTTN2s9s1Sd7cTTN2s9s1Sd7cTjLq7nWDqZrVvlrq7nWDqZrVvlrq7nWDU3e0EUzerfbPU3e0EUzerfbPU3e0Eo+5uJ5i6We2bpe5uJxh1dzvB1M1q3yx1dzvB1M1q3yx1dzvBqLvbCaZuVvtmqbvbCaZuVvtmqbvbCUbd3U4wdbPaN0vd3U4wdbPaN0vd3U4w6u52gqmb1b5Z6u52gqmb1b5Z6u52glF3txNM3az2zVJ3txNM3az2zVJ3txOMurudYOpmtW+WurudYOpmtW+WurudYNTd7QRTN6t9s9Td7QRTN6t9s9Td7QSj7m4nmLpZ7Zul7m4nGHV3O8HUzWrfLHV3O8HUzWrfLHV3O8Gou9sJpm5W+2apu9sJpm5W+2apu9sJRt3dTjB1s9o3S93dTjB1s9o3S93dTjDq7naCqZvVvlnq7naCqZvVvlnq7naCUXe3E4y5+zi752vdbZ6vOd5zmXORme9vOD8fZRsXDbYAAAAASUVORK5CYII="
+                alt=" boektitel"
+              />
+              <h4>titel</h4>
+              <p class="c-auteur">auteur</p>
+              <p>description</p>
+            </span>
+            <span>
+              <span class="c-voting">
+                <ul class="o-list">
+                  <li>
+                    <input
+                      class="o-hide-accessible c-option"
+                      type="radio"
+                      name="radios"
+                      id="radio1"
+                    />
+                    <label
+                      for="${book.primary_isbn10}_1"
+                      class="c-option__symbol js-like"
+                    >
+                      <svg
+                        class="c-option__symbol--svg"
+                        version="1.1"
+                        id="Layer_2"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 50 50"
+                        style="enable-background: new 0 0 50 50"
+                        xml:space="preserve"
+                      >
+                        <path
+                          class="c-svg c-thumbs_up"
+                          d="M43.8,21.6c0.3,0.3,0.4,1.1,0.4,1.1l0.1,5.1l-6,14.1c0,0-0.8,1.3-1.3,1.6c-0.3,0.2-1.7,0.3-1.7,0.3l-29.8,0
+          V21.2h8.8L27.3,7.7c0,0,1.2-1.4,1.4-1.5c0.5-0.3,0.1,2.2,0.1,2.2l-2.7,12.7h16.8C42.9,21.2,43.6,21.3,43.8,21.6z M14.4,43.8V21.2
+          V43.8z"
+                        />
+                      </svg>
+                    </label>
+                    123
+                  </li>
+                  <li>
+                    <input
+                      class="o-hide-accessible c-option"
+                      type="radio"
+                      name="radios"
+                      id="radio2"
+                    />
+                    <label
+                      for="${book.primary_isbn10}_2"
+                      class="c-option__symbol js-dislike"
+                    >
+                      <svg
+                        class="c-option__symbol--svg"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 50 50"
+                        style="enable-background: new 0 0 50 50"
+                        xml:space="preserve"
+                      >
+                        <path
+                          class="c-svg c-thumbs_down"
+                          d="M6.1,28.5c-0.3-0.3-0.4-1.1-0.4-1.1l-0.1-5.1l6-14.1c0,0,0.8-1.3,1.3-1.6c0.2-0.2,1.7-0.3,1.7-0.3h29.8v22.6
+          h-8.8L22.7,42.2c0,0-1.2,1.4-1.4,1.5c-0.5,0.3-0.1-2.2-0.1-2.2l2.7-12.7H7.1C7.1,28.9,6.4,28.6,6.1,28.5z M35.6,6.2v22.6V6.2z"
+                        />
+                      </svg>
+                    </label>
+                    <p>123</p>
+                  </li>
+                </ul>
+                <div class="line"></div>
+                <!-- <button class="c-boeken__boek-review js-like">like</button>
+                      <button class="c-boeken__boek-review js-dislike">dislike</button> -->
+              </span>
+            </span>
+          </div>
+        </span>
+        <span class="js-grafiek c-group-grafieken">
+          <span class="c-grafieken">
+            <h4>categorie naam</h4>
+            <canvas class="js-graph c-grafiek" width="auto" height="auto" margin="0"></canvas>
+          </span>
+        </span>
+      </span>
+    </main>
+  </body>
+</html>
